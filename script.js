@@ -1,9 +1,12 @@
+// script.js
+
 // Adjusted URL to point to the model hosted on GitHub Pages
 const URL = "https://lwoulfe765.github.io/Heart-Sound-Detector-/Heart%20Sounds%20Project/";
 
 // Global recognizer variable
 let recognizer;
 
+// Initialize the recognizer and load the model
 async function createModel() {
     const checkpointURL = URL + "model.json"; // model topology
     const metadataURL = URL + "metadata.json"; // model metadata
@@ -47,7 +50,6 @@ async function predictAudio() {
         await createModel();
     }
 
-    // Get the file from the file input
     const fileInput = document.getElementById('audio-upload');
     const audioFile = fileInput.files[0];
 
@@ -69,5 +71,21 @@ async function predictAudio() {
 // Function to update the UI with the prediction results
 function updateUIWithPrediction(prediction) {
     // TODO: Implement this function to update the label container with the prediction results
+    const labelContainer = document.getElementById('label-container');
+    labelContainer.innerHTML = ''; // Clear previous results
+
+    // Example: If your prediction object has properties that are the label names
+    for (const [label, score] of Object.entries(prediction)) {
+        const labelElement = document.createElement('div');
+        labelElement.textContent = `${label}: ${score.toFixed(2)}`;
+        labelContainer.appendChild(labelElement);
+    }
+}
+
+// The preprocessAudio function needs to be implemented if required by your model
+function preprocessAudio(audioBuffer) {
+    // TODO: Convert the audioBuffer to the format your model was trained on
+    // For example, this could involve generating a spectrogram or extracting MFCCs
+    return audioBuffer; // Placeholder: return the processed audio data
 }
 
