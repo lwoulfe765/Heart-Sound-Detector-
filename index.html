@@ -11,13 +11,13 @@
     
 <body>
     <div>Teachable Machine Audio Model</div>
-     <!-- Button to activate live audio analysis -->
-    <button type="button" onclick="init()">Analyze Live Audio</button>
-
+    <!-- Button to activate live audio analysis -->
+    <button type="button" id="start">Analyze Live Audio</button>
+    
     <!-- Input for selecting a pre-recorded audio file -->
     <input type="file" id="audio-upload" accept="audio/*">
     <!-- Button to start analyzing the selected audio file -->
-    <button type="button" onclick="predictAudio()">Analyze Uploaded Audio</button>
+    <button type="button" id="analyze-button">Analyze Uploaded Audio</button>
 
     <div id="label-container"></div>
     <!-- Input for spectrogram to appear, add a div with an id for targeting with p5.js. -->
