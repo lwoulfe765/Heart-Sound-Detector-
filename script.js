@@ -91,21 +91,6 @@ function updateUIWithPrediction(prediction) {
 }
 
 // The preprocessAudio function needs to be implemented if required by your model
-// Remove one of the duplicate definitions of the updateUIWithPrediction function
-function updateUIWithPrediction(prediction) {
-    // TODO: Implement this function to update the label container with the prediction results
-    const labelContainer = document.getElementById('label-container');
-    labelContainer.innerHTML = ''; // Clear previous results
-
-    // Example: If your prediction object has properties that are the label names
-    for (const [label, score] of Object.entries(prediction)) {
-        const labelElement = document.createElement('div');
-        labelElement.textContent = `${label}: ${score.toFixed(2)}`;
-        labelContainer.appendChild(labelElement);
-    }
-}
-
-// The preprocessAudio function needs to be implemented if required by your model
 function preprocessAudio(audioBuffer) {
     // TODO: Convert the audioBuffer to the format your model was trained on
     // For example, this could involve generating a spectrogram or extracting MFCCs
@@ -118,5 +103,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     // Make sure the ID used here matches the ID of your button in the HTML
     document.getElementById('analyze-button').addEventListener('click', predictAudio);
 });
+
 
 
