@@ -4,7 +4,7 @@
 
 // script.js
 // Adjusted URL to point to the model hosted on GitHub Pages
-const URL = "https://lwoulfe765.github.io/Heart-Sound-Detector-/Heart%20Sounds%20Project/";
+const modelURL = "https://lwoulfe765.github.io/Heart-Sound-Detector-/Heart%20Sounds%20Project/";
 
 // Global recognizer variable
 let recognizer;
