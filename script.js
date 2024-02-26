@@ -36,4 +36,4 @@ async function init() {
         overlapFactor: 0.50
     });
 }
-<script src="script.js"></script>
+
