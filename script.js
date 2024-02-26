@@ -21,7 +21,7 @@ async function createModel() { // Added the missing opening brace here
         metadataURL);
 
     await recognizer.ensureModelLoaded();
-
+}
 async function init() {
     await createModel();
     await recognizer.ensureModelLoaded();
