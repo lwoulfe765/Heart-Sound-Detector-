@@ -1,4 +1,6 @@
 /*jslint esversion: 6 */
+/* eslint-disable-next-line */
+/* eslint-env es8 */
 
 // script.js
 // Adjusted URL to point to the model hosted on GitHub Pages
