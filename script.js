@@ -33,7 +33,7 @@ async function init() {
         includeSpectrogram: true,
         probabilityThreshold: 0.75,
         invokeCallbackOnNoiseAndUnknown: true,
-        overlapFactor: 0.50
+        overlapFactor: 0.0
     });
 }
 
