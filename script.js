@@ -10,9 +10,9 @@ const modelURL = "https://lwoulfe765.github.io/Heart-Sound-Detector-/Heart%20Sou
 let recognizer;
 
 // Initialize the recognizer and load the model
-async function createModel() 
-    const checkpointURL = URL + "model.json"; // model topology
-    const metadataURL = URL + "metadata.json"; // model metadata
+async function createModel() { // Added the missing opening brace here
+    const checkpointURL = modelURL + "model.json"; // model topology
+    const metadataURL = modelURL + "metadata.json"; // model metadata
 
     recognizer = speechCommands.create(
         "BROWSER_FFT", // Fourier transform type
