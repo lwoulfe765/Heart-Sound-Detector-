@@ -32,25 +32,28 @@ async function init() {
     }
 }
 
-    // Start listening for live audio
+    // Function to start listening for live audio
+function startListening() {
     recognizer.listen(result => {
-    const scores = result.scores; // Existing score processing
-    for (let i = 0; i < classLabels.length; i++) {
-        const classPrediction = classLabels[i] + ": " + scores[i].toFixed(2);
-        labelContainer.childNodes[i].innerHTML = classPrediction;
-    }
-
-    // New: Visualize the Spectrogram
-    const frequencies = result.spectrogram.data;
-    const steps = result.spectrogram.frameSize;
-    visualizeSpectrogram(frequencies, steps); // Call your visualization function
-}, {
-    includeSpectrogram: true, // Make sure this is true to receive spectrogram data
-    probabilityThreshold: 0.75,
-    invokeCallbackOnNoiseAndUnknown: true,
-    overlapFactor: 0.0
-});
-
+        const scores = result.scores; // Existing score processing
+        const classLabels = recognizer.wordLabels(); // get class labels
+        const labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < classLabels.length; i++) {
+            const classPrediction = classLabels[i] + ": " + scores[i].toFixed(2);
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
+        
+        // New: Visualize the Spectrogram
+        const frequencies = result.spectrogram.data;
+        const steps = result.spectrogram.frameSize;
+        visualizeSpectrogram(frequencies, steps); // Call your visualization function
+    }, {
+        includeSpectrogram: true, // Make sure this is true to receive spectrogram data
+        probabilityThreshold: 0.75,
+        invokeCallbackOnNoiseAndUnknown: true,
+        overlapFactor: 0.0
+    });
+}
 
 // Function to handle pre-recorded audio files
 async function predictAudio() {
@@ -99,10 +102,16 @@ function preprocessAudio(audioBuffer) {
 }
 
 // This ensures the code block runs after the HTML document has fully loaded
-document.addEventListener('DOMContentLoaded', (event) => {
-    // Attaches an event listener to the 'Analyze Uploaded Audio' button
-    // Make sure the ID used here matches the ID of your button in the HTML
-    document.getElementById('analyze-button').addEventListener('click', predictAudio);
+document.addEventListener('DOMContentLoaded', async (event) => {
+    try {
+        await init(); // Initialize everything before setting up the listener
+        startListening(); // Now set up the recognizer to start listening
+        // Attaches an event listener to the 'Analyze Uploaded Audio' button
+        document.getElementById('analyze-button').addEventListener('click', predictAudio);
+    } catch (error) {
+        console.error("Initialization failed", error);
+        // Handle the error appropriately
+    }
 });
 
 
