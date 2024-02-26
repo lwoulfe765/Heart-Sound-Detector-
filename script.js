@@ -1,5 +1,5 @@
 // Adjusted URL to point to the model hosted on GitHub Pages
-const URL = "https://lwoulde765.github.io/heart-sound-detector/my_model/";
+const URL = "https://lwoulfe765.github.io/Heart-Sound-Detector-/Heart%20Sounds%20Project/";
 
 async function createModel() {
     const checkpointURL = URL + "model.json"; // model topology
