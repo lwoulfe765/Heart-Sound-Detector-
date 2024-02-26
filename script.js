@@ -10,7 +10,7 @@ const URL = "https://lwoulfe765.github.io/Heart-Sound-Detector-/Heart%20Sounds%2
 let recognizer;
 
 // Initialize the recognizer and load the model
-async function createModel() {
+async function createModel() 
     const checkpointURL = URL + "model.json"; // model topology
     const metadataURL = URL + "metadata.json"; // model metadata
 
