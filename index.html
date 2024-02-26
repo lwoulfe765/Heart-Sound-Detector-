@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Teachable Machine Audio Model</title>
     <link rel="stylesheet" href="style.css"> <!-- Link to your CSS file -->
-
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 
 </head>
+    
 <body>
     <div>Teachable Machine Audio Model</div>
      <!-- Button to activate live audio analysis -->
@@ -20,6 +20,9 @@
     <button type="button" onclick="predictAudio()">Analyze Uploaded Audio</button>
 
     <div id="label-container"></div>
+    <!-- Input for spectrogram to appear, add a div with an id for targeting with p5.js. -->
+    <div id="spectrogram-placeholder"></div>
+
 
     <!-- TensorFlow and your script -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
