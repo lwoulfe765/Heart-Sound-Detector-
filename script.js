@@ -91,31 +91,25 @@ function updateUIWithPrediction(prediction) {
 }
 
 // The preprocessAudio function needs to be implemented if required by your model
-function preprocessAudio(audioBuffer) {
-    // TODO: Convert the audioBuffer to the format your model was trained on
-    // For example, this could involve generating a spectrogram or extracting MFCCs
-    return audioBuffer; // Placeholder: return the processed audio data
-}
-    // ... [rest of your script.js code] ...
-
-// Function to handle pre-recorded audio files
-async function predictAudio() {
-    // Ensure the recognizer is loaded
-    if (!recognizer) {
-        await createModel();
-    }
-
-    // ... [rest of the predictAudio function] ...
-}
-
-// Function to update the UI with the prediction results
+// Remove one of the duplicate definitions of the updateUIWithPrediction function
 function updateUIWithPrediction(prediction) {
-    // ... [rest of the updateUIWithPrediction function] ...
+    // TODO: Implement this function to update the label container with the prediction results
+    const labelContainer = document.getElementById('label-container');
+    labelContainer.innerHTML = ''; // Clear previous results
+
+    // Example: If your prediction object has properties that are the label names
+    for (const [label, score] of Object.entries(prediction)) {
+        const labelElement = document.createElement('div');
+        labelElement.textContent = `${label}: ${score.toFixed(2)}`;
+        labelContainer.appendChild(labelElement);
+    }
 }
 
 // The preprocessAudio function needs to be implemented if required by your model
 function preprocessAudio(audioBuffer) {
-    // ... [rest of the preprocessAudio function] ...
+    // TODO: Convert the audioBuffer to the format your model was trained on
+    // For example, this could involve generating a spectrogram or extracting MFCCs
+    return audioBuffer; // Placeholder: return the processed audio data
 }
 
 // This ensures the code block runs after the HTML document has fully loaded
