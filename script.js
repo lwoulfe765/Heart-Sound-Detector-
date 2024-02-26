@@ -25,6 +25,7 @@ async function createModel()
 
 async function init() {
     await createModel();
+    await recognizer.ensureModelLoaded();
     const classLabels = recognizer.wordLabels(); // get class labels
     const labelContainer = document.getElementById("label-container");
     for (let i = 0; i < classLabels.length; i++) {
