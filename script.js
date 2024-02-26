@@ -30,6 +30,7 @@ async function init() {
     for (let i = 0; i < classLabels.length; i++) {
         labelContainer.appendChild(document.createElement("div"));
     }
+}
 
     // Start listening for live audio
     recognizer.listen(result => {
