@@ -30,18 +30,23 @@ async function init() {
 
     // Start listening for live audio
     recognizer.listen(result => {
-        const scores = result.scores;
-        for (let i = 0; i < classLabels.length; i++) {
-            const classPrediction = classLabels[i] + ": " + scores[i].toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
-        }
-    }, {
-        includeSpectrogram: true,
-        probabilityThreshold: 0.75,
-        invokeCallbackOnNoiseAndUnknown: true,
-        overlapFactor: 0.0
-    });
-}
+    const scores = result.scores; // Existing score processing
+    for (let i = 0; i < classLabels.length; i++) {
+        const classPrediction = classLabels[i] + ": " + scores[i].toFixed(2);
+        labelContainer.childNodes[i].innerHTML = classPrediction;
+    }
+
+    // New: Visualize the Spectrogram
+    const frequencies = result.spectrogram.data;
+    const steps = result.spectrogram.frameSize;
+    visualizeSpectrogram(frequencies, steps); // Call your visualization function
+}, {
+    includeSpectrogram: true, // Make sure this is true to receive spectrogram data
+    probabilityThreshold: 0.75,
+    invokeCallbackOnNoiseAndUnknown: true,
+    overlapFactor: 0.0
+});
+
 
 // Function to handle pre-recorded audio files
 async function predictAudio() {
